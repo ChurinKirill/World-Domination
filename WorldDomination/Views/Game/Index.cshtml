@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model WorldDomination.Models.GameModel
+
+<!DOCTYPE html>
 <html lang="rus">
 <head>
     <meta charset="utf-8" />
@@ -18,10 +20,13 @@
     <link rel="stylesheet" href="~/Content/style.css" />
 </head>
 <body>
+    <div class="update">
+        <button class="update" id="update-button">Обновить</button>
+    </div>
     <div class="currentCountry">
         <div class="header">
             <div class="nameCountry col-lg-1 col-md-2">
-                <p>РОССИЯ</p>
+                <p>@Html.DisplayTextFor(model => model.Country.Name)</p>
             </div>
             <div class="countryStatistics col-lg-10 col-md-8">
                 <div class="countryStatistic col-lg-5 col-md-4">
@@ -29,7 +34,7 @@
                         <p>средний уровень жизни в стране:</p>
                     </div>
                     <div class="statistic2 col-lg-1 col-md-1">
-                        <p>0%</p>
+                        <p>@Html.DisplayTextFor(model => model.Country.LifeLevel)%</p>
                     </div>
                 </div>
                 <div class="countryStatistic col-lg-5 col-md-4">
@@ -37,7 +42,7 @@
                         <p>доступный бюджет:</p>
                     </div>
                     <div class="statistic2 col-lg-1 col-md-1">
-                        <p>0</p>
+                        <p>@Html.DisplayTextFor(model => model.Country.Budget)</p>
                     </div>
                 </div>
             </div>
@@ -45,20 +50,20 @@
         <div class="Body">
             <div class="cities">
                 <article class="city card col-lg-3 col-md-3">
-                    <img class="card-img-top" src="../flags/Moscow-flag.png" alt="Флаг города">
-                    <div class="card-header">Москва</div>
+                    @*<img class="card-img-top" src="../flags/Moscow-flag.png" alt="Флаг города">*@
+                    <div class="card-header">@Html.DisplayTextFor(model => model.Country.Cities[0].Name)</div>
                     <div class="city-statistic card-body">
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Развитие</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[0].Progress)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Ур.жизни</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[0].LifeLevel)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Доход</span>
-                            <span class="characteristic" style="float: right;">0$</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[0].Income)$</span>
                         </div>
                         <div class="card-text" style="padding-top: 0.1%;">
                             <a class="btn btn-success btn-block btn-outline-success" role="button">Развить экономику (0$)</a>
@@ -67,20 +72,20 @@
                     </div>
                 </article>
                 <article class="city card col-lg-3 col-md-3">
-                    <img class="card-img-top" src="../flags/St-Petersburg-flag.png" alt="Флаг города">
-                    <div class="card-header">Санкт-Петербург</div>
+                    @*<img class="card-img-top" src="../flags/Moscow-flag.png" alt="Флаг города">*@
+                    <div class="card-header">@Html.DisplayTextFor(model => model.Country.Cities[1].Name)</div>
                     <div class="city-statistic card-body">
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Развитие</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[1].Progress)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Ур.жизни</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[1].LifeLevel)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Доход</span>
-                            <span class="characteristic" style="float: right;">0$</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[1].Income)$</span>
                         </div>
                         <div class="card-text" style="padding-top: 0.1%;">
                             <a class="btn btn-success btn-block btn-outline-success" role="button">Развить экономику (0$)</a>
@@ -89,20 +94,20 @@
                     </div>
                 </article>
                 <article class="city card col-lg-3 col-md-3">
-                    <img class="card-img-top" src="../flags/Vladivostok-flag.png" alt="Флаг города">
-                    <div class="card-header">Владивосток</div>
+                    @*<img class="card-img-top" src="../flags/Moscow-flag.png" alt="Флаг города">*@
+                    <div class="card-header">@Html.DisplayTextFor(model => model.Country.Cities[2].Name)</div>
                     <div class="city-statistic card-body">
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Развитие</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[2].Progress)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Ур.жизни</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[2].LifeLevel)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Доход</span>
-                            <span class="characteristic" style="float: right;">0$</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[2].Income)$</span>
                         </div>
                         <div class="card-text" style="padding-top: 0.1%;">
                             <a class="btn btn-success btn-block btn-outline-success" role="button">Развить экономику (0$)</a>
@@ -111,20 +116,20 @@
                     </div>
                 </article>
                 <article class="city card col-lg-3 col-md-3">
-                    <img class="card-img-top" src="../flags/Novosibirsk-flag.png" alt="Флаг города">
-                    <div class="card-header">Новосибирск</div>
+                    @*<img class="card-img-top" src="../flags/Moscow-flag.png" alt="Флаг города">*@
+                    <div class="card-header">@Html.DisplayTextFor(model => model.Country.Cities[3].Name)</div>
                     <div class="city-statistic card-body">
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Развитие</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[3].Progress)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Ур.жизни</span>
-                            <span class="characteristic" style="float: right;">0%</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[3].LifeLevel)%</span>
                         </div>
                         <div class="card-text">
                             <span class="characteristic" style="float: left;">Доход</span>
-                            <span class="characteristic" style="float: right;">0$</span>
+                            <span class="characteristic" style="float: right;">@Html.DisplayTextFor(model => model.Country.Cities[3].Income)$</span>
                         </div>
                         <div class="card-text" style="padding-top: 0.1%;">
                             <a class="btn btn-success btn-block btn-outline-success" role="button">Развить экономику (0$)</a>
@@ -155,22 +160,22 @@
                                 <p>На кого наложить:</p>
                                 <ul style="list-style-type: none;">
                                     <li>
-                                        <label><input type="checkbox"> США</label>
+                                        <label><input type="checkbox">@Html.DisplayTextFor(model => model.OtherCountries[0].Name)</label>
                                     </li>
                                     <li>
-                                        <label><input type="checkbox"> Израиль</label>
+                                        <label><input type="checkbox">@Html.DisplayTextFor(model => model.OtherCountries[1].Name)</label>
                                     </li>
                                     <li>
-                                        <label><input type="checkbox"> Польша</label>
+                                        <label><input type="checkbox">@Html.DisplayTextFor(model => model.OtherCountries[2].Name)</label>
                                     </li>
                                     <li>
-                                        <label><input type="checkbox"> Германия</label>
+                                        <label><input type="checkbox">@Html.DisplayTextFor(model => model.OtherCountries[3].Name)</label>
                                     </li>
                                     <li>
-                                        <label><input type="checkbox"> Япония</label>
+                                        <label><input type="checkbox">@Html.DisplayTextFor(model => model.OtherCountries[4].Name)</label>
                                     </li>
                                     <li>
-                                        <label><input type="checkbox"> Китай</label>
+                                        <label><input type="checkbox">@Html.DisplayTextFor(model => model.OtherCountries[5].Name)</label>
                                     </li>
                                 </ul>
                                 <a class="btn btn-primary btn-block btn-outline-secondary" role="button">
@@ -184,42 +189,42 @@
                         <ul class="remittance__countries" style="list-style-type: none;">
                             <li>
                                 <p>
-                                    США
+                                    @Html.DisplayTextFor(model => model.OtherCountries[0].Name)
                                     <input type="number">
                                     $
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Израиль
+                                    @Html.DisplayTextFor(model => model.OtherCountries[1].Name)
                                     <input type="number">
                                     $
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Польша
+                                    @Html.DisplayTextFor(model => model.OtherCountries[2].Name)
                                     <input type="number">
                                     $
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Германия
+                                    @Html.DisplayTextFor(model => model.OtherCountries[3].Name)
                                     <input type="number">
                                     $
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Япония
+                                    @Html.DisplayTextFor(model => model.OtherCountries[4].Name)
                                     <input type="number">
                                     $
                                 </p>
                             </li>
                             <li>
                                 <p>
-                                    Китай
+                                    @Html.DisplayTextFor(model => model.OtherCountries[5].Name)
                                     <input type="number">
                                     $
                                 </p>
@@ -257,5 +262,7 @@
             </div>
         </div>
     </div>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/Game.js"></script>
 </body>
 </html>

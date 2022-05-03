@@ -7,7 +7,7 @@
             if (data.Status == "0") {
                 $(".exeption-textarea").append("Incorrect data!");
             } else {
-                window.location.replace("Game/Index");
+                window.location.replace("Game/Update");
             }
         }
     });
