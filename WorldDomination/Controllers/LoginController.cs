@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MySql.Data.MySqlClient;
 using WorldDomination.Core;
 
 namespace WorldDomination.Controllers
@@ -32,7 +29,7 @@ namespace WorldDomination.Controllers
             {
                 HttpCookie cookie = new HttpCookie("CountryId");
                 cookie["countryId"] = account_id;
-                cookie.Expires = DateTime.Now.AddHours(10);
+                cookie.Expires = DateTime.Now.AddHours(5);
                 Response.Cookies.Add(cookie);
                 return Json(new
                 {

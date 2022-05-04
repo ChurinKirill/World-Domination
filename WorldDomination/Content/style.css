@@ -35,6 +35,11 @@ body {
     flex-direction: column;
 }
 
+.other-country-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 /*.card-bg-blue {
     background-color: rgba(0, 0, 255, 0.952);
 }*/

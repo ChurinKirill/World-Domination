@@ -34,58 +34,58 @@ namespace WorldDomination.Core
             //return result.GetInt32("account_id");
         }
 
-        public static List<Dictionary<string, string>> GetCitiesInfo(int countryId)
+        public static List<Models.CityDataModel> GetCitiesInfo(int countryId)
         {
             string query = $"select * from cities where country_id = '{countryId}'";
             MySqlDataReader result = ExecuteQuery(query);
-            List<Dictionary<string, string>> response = new List<Dictionary<string, string>>();
+            List<Models.CityDataModel> response = new List<Models.CityDataModel>();
             while (result.Read())
             {
-                response.Add(new Dictionary<string, string>()
+                response.Add(new Models.CityDataModel
                 {
-                    { "city_id", result["city_id"].ToString() },
-                    { "name_city", result["name_city"].ToString() },
-                    { "growth", result["growth"].ToString() },
-                    { "life_level", result["life_level"].ToString() },
-                    { "income", result["income"].ToString() },
-                    { "armament", result["armament"].ToString() }
+                    Id = int.Parse(result["city_id"].ToString()),
+                    Name = result["name_city"].ToString(),
+                    Progress = int.Parse(result["growth"].ToString()),
+                    LifeLevel = int.Parse(result["life_level"].ToString()),
+                    Income = int.Parse(result["income"].ToString())
                 });
             }
             return response;
         }
 
-        public static List<Dictionary<string, string>> GetOtherCountriesInfo(int countryId)
+        public static List<Models.OtherCountry> GetOtherCountriesInfo(int countryId)
         {
             string query = $"select country_id, name_country from countries where country_id != '{countryId}'";
             MySqlDataReader result = ExecuteQuery(query);
-            List<Dictionary<string, string>> response = new List<Dictionary<string, string>>();
+            List<Models.OtherCountry> response = new List<Models.OtherCountry>();
             while (result.Read())
             {
-                response.Add(new Dictionary<string, string>
+                response.Add(new Models.OtherCountry
                 {
-                    { "country_id", result["country_id"].ToString() },
-                    { "name_country", result["name_country"].ToString() }
+                    Id = int.Parse(result["country_id"].ToString()),
+                    Name = result["name_country"].ToString(),
+                    Cities = GetCitiesInfo(int.Parse(result["country_id"].ToString()))
                 });
             }
             return response;
         }
 
-        public static Dictionary<string, string> GetCountryInfo(int countryId)
+        public static Models.CountryDataModel GetCountryInfo(int countryId)
         {
             string query = $"select * from countries where country_id = '{countryId}'";
             MySqlDataReader result = ExecuteQuery(query);
             while (result.Read())
             {
-                return new Dictionary<string, string>()
+                return new Models.CountryDataModel
                 {
-                    { "country_id", result["country_id"].ToString() },
-                    { "name_country", result["name_country"].ToString() },
-                    { "budget", result["budget"].ToString() },
-                    { "life_level", result["life_level"].ToString() },
-                    { "nuclear", result["nuclear"].ToString() }
+                    Id = int.Parse(result["country_id"].ToString()),
+                    Name = result["name_country"].ToString(),
+                    Budget = int.Parse(result["budget"].ToString()),
+                    LifeLevel = int.Parse(result["life_level"].ToString()),
+                    Nuclear = true ? result["nuclear"].ToString() == "1" : false
                 };
             }
-            return new Dictionary<string, string>() { { "0", "0" } };
+            return new Models.CountryDataModel { };
         }
     }
 }
